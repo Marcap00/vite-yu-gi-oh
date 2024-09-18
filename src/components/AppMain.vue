@@ -70,6 +70,7 @@ main {
                 color: white;
                 font-weight: 700;
                 padding: 1rem;
+                margin-bottom: 1rem;
             }
         }
     }
