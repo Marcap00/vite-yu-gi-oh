@@ -1,13 +1,17 @@
 <script>
 import MainCard from './MainCard.vue'
+import MainBannerFounds from './MainBannerFounds.vue';
 import BasicLoader from './BasicLoader.vue'
 import axios from 'axios'
+
+/* import { store } from '../store.js' */
 
 export default {
     data() {
         return {
             urlCardInfo: `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=200&offset=0`,
             cards: [],
+            /* store */
 
 
         }
@@ -27,6 +31,7 @@ export default {
     },
     components: {
         MainCard,
+        MainBannerFounds,
         BasicLoader
     },
     created() {
@@ -43,9 +48,9 @@ export default {
         <BasicLoader v-if="!this.cards.length" />
         <div v-else class="container">
             <div class="wrapper">
-                <div class="banner-found-cards">
-                    <p>Found {{ this.cards.length }} Cards</p>
-                </div>
+                <!-- <MainBannerFounds /> -->
+                <MainBannerFounds :cards="this.cards" />
+                <!-- Banner found cards -->
                 <div class="row row-cols">
                     <MainCard v-for="card in cards" :key="card.id" :cardObj="card" />
                 </div>
@@ -71,13 +76,13 @@ main {
             min-height: 100vh;
             padding: 1rem;
 
-            .banner-found-cards {
+            /* .banner-found-cards {
                 background-color: #212429;
                 color: white;
                 font-weight: 700;
                 padding: 1rem;
                 margin-bottom: 1rem;
-            }
+            } */
         }
     }
 
