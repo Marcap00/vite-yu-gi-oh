@@ -10,8 +10,17 @@ export default {
 </script>
 
 <template>
-    <h2>Header</h2>
-
+    <header>
+        <h1>Yu-Gi-Oh API</h1>
+    </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+    padding: 1rem;
+
+    h1 {
+        font-weight: 600;
+    }
+}
+</style>
