@@ -9,10 +9,27 @@
 }
 
 /* General */
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* Utils */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+/* Layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.row.row-cols>* {
+  flex: 0 0 20%;
+  padding: 0 15px;
+
 }
