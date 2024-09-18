@@ -1,12 +1,14 @@
 <script>
 import MainCard from './MainCard.vue'
+import BasicLoader from './BasicLoader.vue'
 import axios from 'axios'
 
 export default {
     data() {
         return {
-            urlCardInfo: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0',
+            urlCardInfo: `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=200&offset=0`,
             cards: [],
+            maxLength: 200
         }
     },
     methods: {
@@ -23,7 +25,8 @@ export default {
         }
     },
     components: {
-        MainCard
+        MainCard,
+        BasicLoader
     },
     mounted() {
         this.getCardsInfo()
@@ -35,7 +38,8 @@ export default {
 
 <template>
     <main>
-        <div class="container">
+        <BasicLoader v-if="!(cards.length === this.maxLength)" />
+        <div v-else class="container">
             <div class="wrapper">
                 <div class="banner-found-cards">
                     <p>Found {{ this.cards.length }} Cards</p>
