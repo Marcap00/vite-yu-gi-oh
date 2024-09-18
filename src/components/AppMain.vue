@@ -8,7 +8,8 @@ export default {
         return {
             urlCardInfo: `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=200&offset=0`,
             cards: [],
-            maxLength: 200
+            maxLength: 200,
+
         }
     },
     methods: {
@@ -28,8 +29,8 @@ export default {
         MainCard,
         BasicLoader
     },
-    mounted() {
-        this.getCardsInfo()
+    created() {
+        setTimeout(this.getCardsInfo, 5000)
     }
 
 }
@@ -38,7 +39,7 @@ export default {
 
 <template>
     <main>
-        <BasicLoader v-if="!(cards.length === this.maxLength)" />
+        <BasicLoader v-if="this.cards.length !== maxLength" />
         <div v-else class="container">
             <div class="wrapper">
                 <div class="banner-found-cards">
