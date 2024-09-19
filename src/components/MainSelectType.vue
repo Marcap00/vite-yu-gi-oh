@@ -20,7 +20,12 @@ export default {
 
 <style lang="scss" scoped>
 select {
-    margin: 1.5rem 0;
+    margin: 1.5rem .5rem;
     width: 150px;
+    padding: .5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    font-size: 15px;
 }
 </style>
