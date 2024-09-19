@@ -1,10 +1,11 @@
 <script>
-import MainCard from './MainCard.vue'
-import MainBannerFounds from './MainBannerFounds.vue';
-import BasicLoader from './BasicLoader.vue'
 import axios from 'axios'
-
 /* import { store } from '../store.js' */
+import BasicLoader from './BasicLoader.vue'
+import MainSelect from './MainSelectType.vue'
+import MainBannerFounds from './MainBannerFounds.vue';
+import MainCard from './MainCard.vue'
+
 
 export default {
     data() {
@@ -30,9 +31,10 @@ export default {
         }
     },
     components: {
-        MainCard,
+        BasicLoader,
+        MainSelect,
         MainBannerFounds,
-        BasicLoader
+        MainCard,
     },
     created() {
         /* setTimeout(this.getCardsInfo, 5000) */
@@ -47,6 +49,7 @@ export default {
     <main>
         <BasicLoader v-if="!this.cards.length" />
         <div v-else class="container">
+            <MainSelect />
             <div class="wrapper">
                 <!-- <MainBannerFounds /> -->
                 <MainBannerFounds :cards="this.cards" />
@@ -68,7 +71,7 @@ main {
     min-height: 100vh;
 
     .container {
-        padding-top: 3rem;
+        /* padding-top: 3rem; */
 
         .wrapper {
             background-color: #fff;
