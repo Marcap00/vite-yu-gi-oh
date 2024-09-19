@@ -12,18 +12,19 @@ export default {
         return {
             urlCardInfo: `https://db.ygoprodeck.com/api/v7/cardinfo.php`,
             cards: [],
+            archetype: '',
             /* store */
 
 
         }
     },
     methods: {
-        getCardsInfo() {
+        getCardsInfo(query) {
             axios.get(this.urlCardInfo, {
                 params: {
                     num: 100,
                     offset: 0,
-                    /* archetype: 'Alien' */
+                    archetype: query
                 }
             })
 
@@ -35,6 +36,11 @@ export default {
                 .catch(error => {
                     console.log(error);
                 })
+        },
+        getArchetype(archetype) {
+            this.archetype = archetype
+            console.log('Archetipo selezionato 2:', this.archetype);
+            this.getCardsInfo(this.archetype)
         }
     },
     components: {
@@ -56,7 +62,7 @@ export default {
     <main>
         <BasicLoader v-if="!this.cards.length" />
         <div v-else class="container">
-            <MainSelect />
+            <MainSelect @archetype="getArchetype" />
             <div class="wrapper">
                 <!-- <MainBannerFounds /> -->
                 <MainBannerFounds :cards="this.cards" />
