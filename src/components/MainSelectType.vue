@@ -1,9 +1,31 @@
 <script>
+import axios from 'axios'
+
 export default {
     data() {
         return {
-
+            urlCardArchetypes: `https://db.ygoprodeck.com/api/v7/archetypes.php`,
+            archetypes: [],
         }
+    },
+    methods: {
+        getArchetypes() {
+            axios.get(this.urlCardArchetypes)
+                .then(response => {
+                    console.log('Risposta della chiamata:', response.data);
+                    this.archetypes = response.data;
+
+                    console.log('Array di archetipi popolato:', this.archetypes);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+
+    },
+    created() {
+        this.getArchetypes()
+
     },
 }
 
@@ -12,9 +34,9 @@ export default {
 <template>
     <select name="type-cards" id="type-cards">
         <option selected value="all">All</option>
-        <option value="alien">Alien</option>
-        <option value="Infernoble Arms">Infernoble Arms</option>
-
+        <option v-for="(archetype, index) in archetypes" value="alien" :key="index">
+            {{ archetype.archetype_name }}
+        </option>
     </select>
 </template>
 
