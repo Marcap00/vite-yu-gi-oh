@@ -40,15 +40,17 @@ export default {
 
 <template>
     <select name="type-cards" id="type-cards">
-        <option selected value="all">All</option>
-        <option v-for="(archetype, index) in archetypes" value="alien" :key="index"
-            @click="emitArchetype(archetype.archetype_name)">
+        <option selected class="text-odd" value="all">All</option>
+        <option v-for="(archetype, index) in archetypes" :class="index % 2 === 0 ? 'text-even' : 'text-odd'"
+            value="alien" :key="index" @click="emitArchetype(archetype.archetype_name)">
             {{ archetype.archetype_name }}
         </option>
     </select>
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variables.scss' as *;
+
 select {
     margin: 1.5rem .5rem;
     width: 150px;
@@ -57,5 +59,14 @@ select {
     border-radius: 5px;
     border: 1px solid #fff;
     font-size: 15px;
+
+}
+
+.text-even {
+    background-color: #fff;
+}
+
+.text-odd {
+    background-color: $bg-main;
 }
 </style>
