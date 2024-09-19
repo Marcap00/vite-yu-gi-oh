@@ -10,7 +10,7 @@ import MainCard from './MainCard.vue'
 export default {
     data() {
         return {
-            urlCardInfo: `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=200&offset=0`,
+            urlCardInfo: `https://db.ygoprodeck.com/api/v7/cardinfo.php`,
             cards: [],
             /* store */
 
@@ -19,7 +19,14 @@ export default {
     },
     methods: {
         getCardsInfo() {
-            axios.get(this.urlCardInfo)
+            axios.get(this.urlCardInfo, {
+                params: {
+                    num: 100,
+                    offset: 0,
+                    /* archetype: 'Alien' */
+                }
+            })
+
                 .then(response => {
                     console.log(response.data.data);
                     this.cards = response.data.data;
