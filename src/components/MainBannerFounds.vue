@@ -24,8 +24,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variables.scss' as *;
+
 .banner-found-cards {
-    background-color: #212429;
+    background-color: $bg-banner;
     color: white;
     font-weight: 700;
     padding: 1rem;

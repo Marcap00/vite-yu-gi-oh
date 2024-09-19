@@ -20,14 +20,18 @@ export default {
         <div class="card">
             <img :src="cardObj.card_images[0].image_url" class="card-img-top" alt="Card Image">
             <div class="card-body">
-
-                <p class="card-title mb-1">Card Name: <br>
-                <h5>{{ cardObj.name }}</h5>
-                </p>
-                <p v-if="cardObj.archetype" class="card-type">Archetype: <br>
-                <h5>{{ cardObj.archetype }}</h5>
-                </p>
-
+                <ul>
+                    <li class="card-name mb-1">
+                        Card Name:
+                        <br>
+                        <h5>{{ cardObj.name }}</h5>
+                    </li>
+                    <li v-if="cardObj.archetype" class="card-type">
+                        Archetype:
+                        <br>
+                        <h5>{{ cardObj.archetype }}</h5>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -44,16 +48,16 @@ export default {
 .card-body {
     background-color: $bg-main;
 
-    min-height: 100px;
+    min-height: 120px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    padding: 10px;
     text-align: center;
 
-    p {
+    li {
         font-weight: 600;
         font-size: 13px;
 

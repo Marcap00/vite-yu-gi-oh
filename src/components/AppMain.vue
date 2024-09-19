@@ -75,14 +75,6 @@ main {
             width: 100%;
             min-height: 100vh;
             padding: 1rem;
-
-            /* .banner-found-cards {
-                background-color: #212429;
-                color: white;
-                font-weight: 700;
-                padding: 1rem;
-                margin-bottom: 1rem;
-            } */
         }
     }
 
